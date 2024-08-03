@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h1>1234567890</h1>
+  <div>
+    <p>아오 이씨부래 이거 어케하는거야</p>
+    <input type="text" name="어라?" id="">
+    <button name="">눌러</button>
+  </div>
+  <h2>콤마찍기</h2>
+
+  <script>                  
+  const h1 = document.querySelector('h1')
+  const input = document.querySelector('input')
+  const button = document.querySelector('button')
+  const h2 = document.querySelector('h2')
+
+  button.addEventListener('click', () => {
+    const str = input.value            //숫자 문자열로 잡아와
+    const array = [ ]
+    const str0 = ''
+    for(let i=0; i<str.length; i++){   //문자열을 배열화해서
+      array[i] = str[i]
+    }
+    h2.textContent = array.reverse().join("") //1,2,3,4 -> 4321
+    const array0 = array.slice()       //새배열에 얕은 복사
+    const array1 = [ ]                 //콤마 넣을 빈 배열
+    for(let i=0; i<parseInt(array0.length / 4)+1; i++){
+      array1[5*i]    = array0[4*i]
+      array1[5*i +1] = array0[4*i+1]
+      array1[5*i +2] = array0[4*i+2]
+      array1[5*i +3] = array0[4*i+3]
+      if(array0[4*i+3] === undefined || array0[4*i+4] === undefined ){
+        array1[5*i +4] = " "
+      } else {
+        array1[5*i +4] = ","
+      }
+    }
+    h1.textContent = array1.reverse().join("")
+    input.value = "";                //빈창으로
+
+  })
+   
+  </script>
+</body>
+</html>
